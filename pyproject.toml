@@ -5,7 +5,12 @@ description = ""
 authors = [{ name = "BioCrossCoder", email = "viscaria_dignics@163.com" }]
 readme = "README.md"
 requires-python = ">=3.9,<4.0"
-dependencies = ["fastapi (>=0.115.8,<0.116.0)", "langchain (>=0.3.17,<0.4.0)", "langchain-community (>=0.3.16,<0.4.0)", "dashscope (>=1.22.1,<2.0.0)"]
+dependencies = [
+    "fastapi (>=0.115.8,<0.116.0)",
+    "langchain (>=0.3.17,<0.4.0)",
+    "langchain-community (>=0.3.16,<0.4.0)",
+    "dashscope (>=1.22.1,<2.0.0)",
+]
 
 
 [build-system]
@@ -19,4 +24,3 @@ package-mode = false
 uvicorn = "^0.34.0"
 toml = "^0.10.2"
 types-toml = "^0.10.8.20240310"
-
