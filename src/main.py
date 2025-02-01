@@ -1,17 +1,13 @@
-from fastapi import FastAPI, Header, HTTPException, status
-from langchain_community.llms.tongyi import Tongyi
+from fastapi import FastAPI
+from src.api import router
+from fastapi.responses import RedirectResponse
+import os
+from src import common
 
 app = FastAPI()
+app.include_router(router)
 
 
 @app.get("/")
-async def root(authorization: str = Header(...)):
-    model = Tongyi(
-        model="qwen-turbo",
-        model_kwargs={"temperature": 0.01},
-        api_key=authorization,
-    )
-    try:
-        return model.invoke("hello, who are you?")
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+async def redirect():
+    return RedirectResponse(url=os.environ.get(common.REDIRECT_URL_KEY, ""))
